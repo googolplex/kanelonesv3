@@ -1,0 +1,11 @@
+create view vista_informemensual as
+select kan_yyyymm
+, kan_fecha
+, k.kan_narrativa
+, kan_nombreorientador
+, z.kan_narrativa as dirigidoa
+, kan_carreranombre
+from kan_informesmensuales k 
+left join kan_carrera w on k.idcarrera_id = w.id
+left join kan_orientadores x on k.idorientador_id = x.id
+left join kan_atencioninforme z on k.idattn_id = z.id

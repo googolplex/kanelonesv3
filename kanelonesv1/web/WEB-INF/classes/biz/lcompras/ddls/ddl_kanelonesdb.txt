@@ -1,0 +1,4 @@
+CREATE DATABASE kanelonesdb
+  WITH ENCODING='UTF8'
+       OWNER=kanelones
+       CONNECTION LIMIT=-1;
