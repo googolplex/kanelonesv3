@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informemensualpasantia" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[select * from vista_informemensual2
+where kan_yyyymm = 201705
+and kan_nombreorientador like '%ROGER%']]>
+	</queryString>
+	<field name="kan_yyyymm" class="java.lang.Long"/>
+	<field name="kan_fecha" class="java.sql.Timestamp"/>
+	<field name="kan_narrativa" class="java.lang.String"/>
+	<field name="kan_nombreorientador" class="java.lang.String"/>
+	<field name="dirigidoa" class="java.lang.String"/>
+	<field name="kan_carreranombre" class="java.lang.String"/>
+	<field name="enfasis" class="java.lang.String"/>
+	<field name="beneficiariosmujer" class="java.lang.Long"/>
+	<field name="beneficiariosvaron" class="java.lang.Long"/>
+	<field name="qinstituciones" class="java.lang.Long"/>
+	<field name="ejecutormujer" class="java.lang.Long"/>
+	<field name="ejecutorvaron" class="java.lang.Long"/>
+	<field name="tarea" class="java.lang.String"/>
+	<field name="lugar" class="java.lang.String"/>
+	<field name="actividad" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Long"/>
+	<group name="orientador">
+		<groupExpression><![CDATA[$F{kan_nombreorientador}]]></groupExpression>
+		<groupHeader>
+			<band height="86">
+				<staticText>
+					<reportElement style="Column header" x="7" y="10" width="72" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Orientador]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="103" y="10" width="425" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{kan_nombreorientador}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" stretchType="RelativeToBandHeight" x="7" y="33" width="521" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{kan_narrativa}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="3" y="84" width="544" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement style="Column header" x="315" y="66" width="12" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Q]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="350" y="66" width="22" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[EV]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="380" y="66" width="22" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[EM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="405" y="66" width="22" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[QI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="432" y="66" width="22" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[BM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="471" y="66" width="22" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[BV]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<staticText>
+					<reportElement style="Column header" x="208" y="10" width="107" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[EM-EjecutorMujer]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="383" y="25" width="145" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[BV-benef.Varon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="93" y="10" width="105" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[EV-EjecutorVaron]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="208" y="25" width="142" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[BM-benef.mujer]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="11" y="25" width="149" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[QI-cantidadInstituciones]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="10" y="10" width="69" height="15" forecolor="#736343"/>
+					<textElement/>
+					<text><![CDATA[Q-cantidad]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="46" y="4" width="447" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font size="24" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Informe Mensual - Pasantias Curriculares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="71" width="46" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="59" y="71" width="62" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{kan_yyyymm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="124" y="71" width="36" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="168" y="71" width="92" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{kan_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="5" y="89" width="55" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Carrera]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="68" y="89" width="175" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kan_carreranombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="7" y="114" width="53" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Atencion]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" stretchType="RelativeToBandHeight" x="68" y="114" width="364" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dirigidoa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="327" y="89" width="175" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{enfasis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="260" y="89" width="55" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Enfasis]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="18" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="184" y="0" width="92" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Narrativa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="555" height="16"/>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="11" y="1" width="149" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{actividad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="160" y="1" width="149" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{tarea}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="315" y="1" width="30" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{cantidad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="350" y="1" width="22" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{ejecutorvaron}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="380" y="1" width="22" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{ejecutormujer}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="405" y="1" width="22" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{qinstituciones}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="432" y="1" width="22" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{beneficiariosmujer}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToBandHeight" x="471" y="1" width="22" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{beneficiariosvaron}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
